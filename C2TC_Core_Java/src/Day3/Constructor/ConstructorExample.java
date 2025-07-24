@@ -20,9 +20,9 @@ public class ConstructorExample {
 		System.out.println(" ");
 		
 		Customer c1=new Customer(); //implicit default constructor invoked -->if the programmer missed the constructor in the class then the compiler automatically create the constructor --> because the JVM need the constructor call whenever we need the 
-		c1.setCustomerName(name);
-		c1.setCustomerId(id);
-		c1.setCustomerCity(city);
+		c1.setName(name);
+		c1.setId(id);
+		c1.setCity(city);
 		System.out.println(c1);
 		
 		System.out.print("Enter Customer Id : ");

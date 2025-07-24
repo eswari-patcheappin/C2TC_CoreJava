@@ -1,18 +1,33 @@
 package Day3.Constructor;
 
 public class Customer {
-	public static void main(String args[])
-	{
-		private String name, city;
-		private int cid;
+	private String name, city;
+	private int id;
+	Customer(){
 		
-		public void setCid(int cid) {
-			this.cid=cid;
-		}
-		public void setName(String name) {
-			this.name=name;
-		}
-		
-
 	}
+	Customer(String name, int id, String city){
+		this.name=name;
+		this.id=id;
+		this.city=city;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 }
