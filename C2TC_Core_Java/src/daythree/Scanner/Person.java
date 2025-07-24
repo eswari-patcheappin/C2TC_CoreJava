@@ -1,4 +1,4 @@
-package Day3.Scanner;
+package daythree.Scanner;
 
 public class Person {
 	//Data members

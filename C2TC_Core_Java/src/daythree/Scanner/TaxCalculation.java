@@ -1,4 +1,4 @@
-package Day3.Scanner;
+package daythree.Scanner;
 
 public class TaxCalculation {
 	public void calculateTax(Person person) {

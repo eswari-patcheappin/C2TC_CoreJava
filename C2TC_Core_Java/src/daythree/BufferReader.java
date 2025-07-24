@@ -1,4 +1,4 @@
-package Day3;
+package daythree;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
