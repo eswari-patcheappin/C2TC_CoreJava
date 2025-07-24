@@ -1,5 +1,5 @@
 package Day3.Scanner;
-
+import java.util.Scanner;
 public class PersonExample {
 	public static void main(String[] args) {
 

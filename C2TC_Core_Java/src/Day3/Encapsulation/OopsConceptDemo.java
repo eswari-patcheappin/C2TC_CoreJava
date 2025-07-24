@@ -1,7 +1,6 @@
 package Day3.Encapsulation;
 
 public class OopsConceptDemo {
-	public class OopsConceptDemo {
 		private int serialNum;
 		private String name;
 		private int age;
@@ -37,4 +36,4 @@ public class OopsConceptDemo {
 		}
 
 	}
-}
+
