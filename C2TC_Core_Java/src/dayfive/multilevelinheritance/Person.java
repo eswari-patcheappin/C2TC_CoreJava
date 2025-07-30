@@ -6,7 +6,7 @@ public class Person {
 	private Date dateOfBirth;
 
 	public Person(String name, long conatctNo, Date dateOfBirth) {
-		super();
+		//super();
 		this.name = name;
 		this.conatctNo = conatctNo;
 		this.dateOfBirth = dateOfBirth;
