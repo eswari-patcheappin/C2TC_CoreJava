@@ -1,4 +1,5 @@
-package dayfive.hierarchicalinheritance;
+./'package dayfive.hierarchicalinheritance;
+
 
 public class HierarchicalInheritanceDemo {
 	public static void main(String[] args) {
