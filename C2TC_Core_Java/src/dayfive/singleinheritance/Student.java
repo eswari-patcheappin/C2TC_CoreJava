@@ -25,7 +25,7 @@ public class Student extends Citizen {
 	public String getCollegeName() {
 		return collegeName;
 	}
-o
+
 	public void setCollegeName(String collegeName) {
 		this.collegeName = collegeName;
 	}

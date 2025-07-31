@@ -1,20 +1,19 @@
 package com.tnsif.daysix.usingfinal;
 
+final class FinalClass {
+	void show() {
+		System.out.println("Final class cannot be inherited");
+	}
+}
+
+//can't create child classes from Final class, Ex: String, Wrapper Classes, System, Scanner, Number are Final classes
+/*class FinalChildClass extends FinalClass {
+}
+*/
 public class FinalClassDemo {
 	public static void main(String[] args) {
-
-		MyClass o1 = new MyClass();
-		System.out.println(o1);
-
-		// static method with class name
-		MyClass.display();
-
-		MyClass o2 = new MyClass();
-		System.out.println(o2);
-		MyClass.display();
-		MyClass o3 = new MyClass();
-		System.out.println(o3);
-		MyClass.display();
-
+		// Create the object of final class
+		FinalClass f1 = new FinalClass(); // Call show() method using object reference variable ab.
+		f1.show();
 	}
 }
