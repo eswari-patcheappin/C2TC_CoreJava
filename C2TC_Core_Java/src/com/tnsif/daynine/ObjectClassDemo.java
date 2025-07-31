@@ -17,8 +17,8 @@ class Demo {
 
 public class ObjectClassDemo {
 	public static void main(String[] args) {
-		Sample s = new Sample();
-		Sample s1 = new Sample();
+		Demo s = new Demo();
+		Demo s1 = new Demo();
 		System.out.println(s.getClass().getName());
 		System.out.println(s.hashCode());
 		System.out.println(s1.hashCode());
