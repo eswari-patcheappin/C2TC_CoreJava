@@ -1,6 +1,6 @@
 package com.tnsif.dayfifteen.generics;
 
-/Generic Class implements Generic Interface (MinMax)
+//Generic Class implements Generic Interface (MinMax)
 public class MinMaxImpl<T extends Comparable<T>> implements MinMax<T> {
 	T[] values;
 
