@@ -1,30 +1,41 @@
-package com.tnsif.daytwentytwo.statementinterface;
+package com.tnsif.daytwentythree.service;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Scanner;
 
-import com.mysql.cj.jdbc.result.ResultSetMetaData;
+import com.tnsif.daytwentytwo.preparedstatementinterface.DBUtil;
 
-public class StatementInterfaceDemo {
+public class PreparedStatementDemo {
+
 	static Connection cn;
 
-	static Statement st;
+	static PreparedStatement pst;
 	static {
-		cn = DBUtil.getConnetion();
-		st = cn.createStatement();
+		cn = DBUtil.getConnectionObject();
+
+		if (cn != null)
+			System.out.println("JDBC:connection is taken..");
 
 	}
 
 	public static int addEmployee(int empId, String empName, double empSalary) {
 
 		int n = 0;
-		String query = "INSERT INTO emp VALUES(" + empId + ",'" + empName + "'," + empSalary + ")";
-		n = st.executeUpdate(query);
+		try {
+
+			pst = cn.prepareStatement("INSERT INTO emp values(?,?,?)");
+			pst.setInt(1, empId);
+			pst.setString(2, empName);
+			pst.setDouble(3, empSalary);
+
+			n = pst.executeUpdate();
+		} catch (SQLException e) {
+
+			System.out.println("Error...." + e.getMessage());
+		}
 		return n;
 
 	}
@@ -33,10 +44,11 @@ public class StatementInterfaceDemo {
 		int n = 0;
 		try {
 			String query = "SELECT count(*) FROM emp where id=" + empId;
-			ResultSet rs = (ResultSet) st.executeQuery(query);
+			pst = cn.prepareStatement(query);
+			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
-				if (rs.getInt(1) != 0)
-					n = 1;
+				// System.out.println(rs.getInt(1));
+				n = 1;
 			}
 
 		} catch (SQLException e) {
@@ -52,10 +64,13 @@ public class StatementInterfaceDemo {
 		try {
 
 			int n = validateEmp(empId);
+
 			if (n == 1) {
 				String query = "DELETE FROM emp WHERE id=" + empId;
-				st.executeUpdate(query);
-				status = true;
+				pst = cn.prepareStatement(query);
+				n = pst.executeUpdate();
+				if (n == 1)
+					status = true;
 			}
 
 		} catch (SQLException e) {
@@ -71,11 +86,10 @@ public class StatementInterfaceDemo {
 
 			if (validateEmp(empId) == 1) {
 				String query = "UPDATE emp set name='" + empName + "' WHERE id=" + empId;
-				st.executeUpdate(query);
+				pst = cn.prepareStatement(query);
+				pst.executeUpdate();
 				status = true;
-			} else
-
-				System.out.println("No such Employee Record.....");
+			}
 
 		} catch (SQLException e) {
 
@@ -90,10 +104,10 @@ public class StatementInterfaceDemo {
 
 			if (validateEmp(empId) == 1) {
 				String query = "UPDATE emp SET salary=" + salary + " WHERE id=" + empId;
-				st.executeUpdate(query);
+				pst = cn.prepareStatement(query);
+				pst.executeUpdate();
 				status = true;
-			} else
-				System.out.println("No such Employee Record.....");
+			}
 
 		} catch (SQLException e) {
 
@@ -106,13 +120,8 @@ public class StatementInterfaceDemo {
 		try {
 
 			String query = "SELECT * FROM emp";
-			ResultSet rs = st.executeQuery(query);
-
-			/*
-			 * System.out.println(rs.next());
-			 * System.out.println("----------------------------");
-			 * System.out.println("::::"+rs.getInt(1));
-			 */
+			pst = cn.prepareStatement(query);
+			ResultSet rs = pst.executeQuery(query);
 
 			if (rs.next()) {
 				while (rs.next()) {
@@ -131,7 +140,7 @@ public class StatementInterfaceDemo {
 
 	public void closeConnection() {
 		try {
-			st.close();
+			pst.close();
 			cn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.Properties;
 
 public class DBUtil {
@@ -24,7 +23,7 @@ public class DBUtil {
 			Class.forName(properties.getProperty(DB_DRIVER_CLASS));
 			connection = DriverManager.getConnection(properties.getProperty(DB_URL),
 					properties.getProperty(DB_USERNAME), properties.getProperty(DB_PASSWORD));
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
